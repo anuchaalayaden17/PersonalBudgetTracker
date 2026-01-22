@@ -1,0 +1,36 @@
+{
+    "customer": {
+        "name": "Joseph",
+        "income": 2500.0
+    },
+    "expenses": [
+        {
+            "name": "House Rent",
+            "cost": 1000
+        },
+        {
+            "name": "Food",
+            "cost": 250
+        },
+        {
+            "name": "Transport",
+            "cost": 80
+        },
+        {
+            "name": "Supplies",
+            "cost": 200
+        },
+        {
+            "name": "Internet",
+            "cost": 50
+        },
+        {
+            "name": "Gym",
+            "cost": 40.0
+        },
+        {
+            "name": "trip",
+            "cost": 300.0
+        }
+    ]
+}
