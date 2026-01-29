@@ -5,6 +5,7 @@ class Transaction(ABC):
 
     def __init__(self, amount: float):
         self._amount = amount
+        
 
     def get_amount(self):
         return self._amount

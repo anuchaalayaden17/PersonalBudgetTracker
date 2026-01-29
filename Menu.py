@@ -6,8 +6,7 @@ class Menu:
 
     def run(self):
         while True:
-
-            print("\n=== PERSONAL BUDGET TRACKER ===")
+            print("\n===WELCOME TO PERSONAL BUDGET TRACKER ===")
             print("Customer:", self.tracker.customer.get_name())
             print("Monthly Income: €{:.2f}".format(self.tracker.customer.get_income()))
             print("\n1. Expenses Menu")
