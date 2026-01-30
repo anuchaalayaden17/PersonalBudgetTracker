@@ -1,9 +1,11 @@
-# Menu class (provides an interactive menu with submenus)
+# Menu class handles all user interaction and navigation
 class Menu:
 
     def __init__(self, tracker):
+        # Store reference to BudgetTracker
         self.tracker = tracker
 
+    # Main menu loop
     def run(self):
         while True:
             print("\n===WELCOME TO PERSONAL BUDGET TRACKER ===")
@@ -13,6 +15,7 @@ class Menu:
             print("2. Budget Summary")
             print("3. Exit")
 
+            # Validate menu choice
             while True:
                 choice = input("Choose an option: ")
 
@@ -21,6 +24,7 @@ class Menu:
                 else:
                     print("Please choose 1, 2 or 3.")
 
+            # Navigate based on user choice
             if choice == "1":
                 self.expenses_menu()
             elif choice == "2":
@@ -29,7 +33,7 @@ class Menu:
                 print("Goodbye!")
                 break
 
-    # Submenu
+    # Expenses submenu
     def expenses_menu(self):
         while True:
 
@@ -40,6 +44,7 @@ class Menu:
             print("4. Delete Expense")
             print("5. Back")
 
+            # Validate submenu choice
             while True:
                 choice = input("Choose an option: ")
 
@@ -48,9 +53,10 @@ class Menu:
                 else:
                     print("Choose between 1 and 5.")
 
-            # ADD EXPENSE
+            # CREATE EXPENSE
             if choice == "1":
 
+                # Validate expense name (letters only)
                 while True:
                     name = input("Expense name: ").strip()
                     if name.replace(" ","").isalpha():
@@ -58,6 +64,7 @@ class Menu:
                     else:
                         print("Letters only.")
 
+                # Validate expense cost (positive number)
                 while True:
                     try:
                         cost = float(input("Expense cost (€): "))
@@ -68,10 +75,11 @@ class Menu:
                     except:
                         print("Enter a valid number.")
 
+                # Add expense through BudgetTracker
                 self.tracker.add_expense(name, cost)
                 print("Expense added successfully.")
 
-            # VIEW
+            # READ EXPENSES
             elif choice == "2":
                 expenses = self.tracker.view_expenses()
 
@@ -82,7 +90,7 @@ class Menu:
                     for i, exp in enumerate(expenses):
                         print(f"{i+1}. {exp}")
 
-            # UPDATE
+            # UPDATE EXPENSE
             elif choice == "3":
                 expenses = self.tracker.view_expenses()
 
@@ -93,6 +101,7 @@ class Menu:
                 for i, exp in enumerate(expenses):
                     print(f"{i+1}. {exp}")
 
+                # Validate index selection
                 while True:
                     try:
                         index = int(input("Select expense number: ")) - 1
@@ -103,6 +112,7 @@ class Menu:
                     except:
                         print("Enter a number.")
 
+                # Validate new name
                 while True:
                     new_name = input("New expense name: ")
                     if new_name.replace(" ","").isalpha():
@@ -110,6 +120,7 @@ class Menu:
                     else:
                         print("Letters only.")
 
+                # Validate new cost
                 while True:
                     try:
                         new_cost = float(input("New expense cost (€): "))
@@ -123,7 +134,7 @@ class Menu:
                 self.tracker.update_expense(index, new_name, new_cost)
                 print("Expense updated.")
 
-            # DELETE
+            # DELETE EXPENSE
             elif choice == "4":
                 expenses = self.tracker.view_expenses()
 
@@ -134,6 +145,7 @@ class Menu:
                 for i, exp in enumerate(expenses):
                     print(f"{i+1}. {exp}")
 
+                # Validate index
                 while True:
                     try:
                         index = int(input("Select expense number: ")) - 1
@@ -150,6 +162,7 @@ class Menu:
             elif choice == "5":
                 break
 
+    # Display budget summary
     def summary_menu(self):
         total = self.tracker.total_expenses()
         left = self.tracker.money_left()
