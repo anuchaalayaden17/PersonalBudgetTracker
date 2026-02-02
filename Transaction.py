@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-
+# here i implemented Abstraction using an abstrac class
 # Transaction is an abstract base class
 # It defines a template for all transaction types
 class Transaction(ABC):
@@ -12,7 +12,7 @@ class Transaction(ABC):
     def get_amount(self):
         return self._amount
 
-    # Abstract method that must be implemented by child classes
+    # Abstract method must be implemented by child classes
     @abstractmethod
     def to_dict(self):
         pass

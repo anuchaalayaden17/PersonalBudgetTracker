@@ -1,12 +1,12 @@
 from Storage import Storage
 from BudgetTracker import BudgetTracker
 from Menu import Menu
-
+# Here I import the core classes.
 # This is the main file that starts the entire application
 # It creates the main objects and connects all parts together
 def main():
 
-    # Creates a Storage object to handle saving and loading data from data.json
+    # here i Create a Storage object to handle saving and loading data from data.json
     storage = Storage("data.json")
 
     # Creates a BudgetTracker object which controls the program logic
@@ -17,7 +17,7 @@ def main():
     # The menu uses the tracker to perform actions
     menu = Menu(tracker)
 
-    # Starts the program menu loop
+    # Starts the program
     menu.run()
 
 # This ensures the program only runs when this file is executed directly

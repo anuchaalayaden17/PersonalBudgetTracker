@@ -1,6 +1,6 @@
 from Customer import Customer
 from Expense import Expense
-
+# This is the core class of my application
 # BudgetTracker manages all expenses and performs calculations
 # It also communicates with Storage to save and load data
 class BudgetTracker:
@@ -12,7 +12,7 @@ class BudgetTracker:
         # Load saved customer and expenses from JSON
         customer_data, expenses_data = self.storage.load()
 
-        # If there is no saved customer, request user input
+        # If no data exists, the system asks the user for name and monthly income.
         if customer_data is None:
             print("\n--- CUSTOMER DETAILS ---")
 
@@ -20,7 +20,7 @@ class BudgetTracker:
             name = input("Enter customer name: ")
             income = float(input("Enter monthly income (€): "))
 
-            # Create Customer object
+            # here a customer object is created
             self.customer = Customer(name, income)
 
             # Initialize empty expense list
@@ -55,6 +55,7 @@ class BudgetTracker:
         for name, cost in default_expenses:
             self.expenses.append(Expense(name, cost))
 
+    # These methods implement CRUD: Create, Read, Update, and Delete.
     # CRUD - CREATE: add new expense
     def add_expense(self, name: str, cost: float):
         self.expenses.append(Expense(name, cost))
@@ -79,11 +80,11 @@ class BudgetTracker:
     def total_expenses(self):
         return sum(exp.get_cost() for exp in self.expenses)
 
-    # Calculate remaining money
+    # Calculate remaining balance
     def money_left(self):
         return self.customer.get_income() - self.total_expenses()
 
-    # Save customer and expenses to JSON file
+    # This converts objects to dictionaries and sends them to Storage
     def save(self):
         customer_data = self.customer.to_dict()
         expenses_data = [e.to_dict() for e in self.expenses]

@@ -1,7 +1,7 @@
 from Transaction import Transaction
 
 # Expense class represents a single expense
-# It inherits from Transaction (Inheritance)
+# here i implemented inheritance. It inherits from Transaction
 class Expense(Transaction):
 
     def __init__(self, name: str, cost: float):
@@ -31,6 +31,6 @@ class Expense(Transaction):
     def to_dict(self):
         return {"name": self._name, "cost": self._amount}
 
-    # String representation for printing expenses (Polymorphism)
+    # Here i implemented polymorphism. String is a representation for printing expenses
     def __str__(self):
         return f"{self._name} - €{self._amount:.2f}"

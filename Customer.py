@@ -1,5 +1,6 @@
 # Customer class represents the user of the budget tracker
 # It stores the customer's name and monthly income
+#Here i implemented encapsulation using private variables
 class Customer:
 
     def __init__(self, name: str, income: float):

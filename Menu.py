@@ -1,11 +1,13 @@
-# Menu class handles all user interaction and navigation
+# Menu class controls all user interaction in the system
+# It displays menus, validates input, and calls BudgetTracker methods
 class Menu:
 
     def __init__(self, tracker):
-        # Store reference to BudgetTracker
+    # Store reference to BudgetTracker so Menu can access expense logic
+    # menu does not calculate. It calls BudgetTracker, which shows abstraction
         self.tracker = tracker
 
-    # Main menu loop
+    # Main menu of the application
     def run(self):
         while True:
             print("\n===WELCOME TO PERSONAL BUDGET TRACKER ===")
@@ -15,7 +17,7 @@ class Menu:
             print("2. Budget Summary")
             print("3. Exit")
 
-            # Validate menu choice
+            # Keep asking until the user enters a valid menu option
             while True:
                 choice = input("Choose an option: ")
 
