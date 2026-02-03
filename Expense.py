@@ -28,6 +28,7 @@ class Expense(Transaction):
         self._amount = new_cost
 
     # Convert expense object to dictionary for JSON storage
+    #because it returns the name of the expense and the amount that will be saved in the JSON file
     def to_dict(self):
         return {"name": self._name, "cost": self._amount}
 
